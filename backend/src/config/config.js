@@ -4,10 +4,10 @@ const pjson = require.main.require('./../package.json');
 
 
 global.__ = {
-	NAME : pjson.name,
-	PORT : parseInt(process.env.PORT),
-	VERSION : pjson.version,
-	DEBUG : process.env.DEBUG,
+	NAME: pjson.name,
+	PORT: parseInt(process.env.PORT),
+	VERSION: pjson.version,
+	DEBUG: process.env.DEBUG == "TRUE" ? true : false,
 
 	PORT: parseInt(process.env.PORT),
 	DB: {
