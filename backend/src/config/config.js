@@ -1,9 +1,14 @@
 'use strict';
 require('dotenv').config();
+const pjson = require.main.require('./../package.json');
 
-// ENVIRONMENT VARIABLES
 
 global.__ = {
+	NAME : pjson.name,
+	PORT : parseInt(process.env.PORT),
+	VERSION : pjson.version,
+	DEBUG : process.env.DEBUG,
+
 	PORT: parseInt(process.env.PORT),
 	DB: {
 		USERNAME: process.env.DB_USERNAME,
