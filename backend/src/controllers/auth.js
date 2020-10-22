@@ -42,9 +42,7 @@ module.exports = {
             let isMatch = await bcrypt.compare(password, originalPassword);
 
             if (isMatch) {
-                console.log("matched!");
                 const { id } = user[0].dataValues;
-                console.log(id);
                 const payload = { id, email };
 
                 let token = jwt.sign(payload, __.JWT.SECRET_KEY, { expiresIn: 3600 });
