@@ -12,10 +12,10 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <b-navbar-nav>
-            <b-nav-item style="margin-top: 5px" href="/home">
+            <b-nav-item style="margin-top: 5px" to="/home">
               <a>✨Home</a>
             </b-nav-item>
-            <b-nav-item style="margin-top: 5px" href="/matches">
+            <b-nav-item style="margin-top: 5px" to="/matches">
               <a>🎉Matches</a>
             </b-nav-item>
           </b-navbar-nav>
