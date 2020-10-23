@@ -2,7 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Auth from '../views/Auth.vue';
 import Home from '../views/Home.vue';
-import auth from '../store/modules/auth'
+import auth from '../store/modules/auth';
+import pageNotFound from '../views/PageNotFound';
 
 Vue.use(Router);
 
@@ -13,15 +14,23 @@ let router = new Router({
 		{
 			path: '/',
 			name: 'auth',
-			component: Auth
+			component: Auth,
+			meta: {
+				title: "Job♥Matcher | Authentication"
+			}
 		},
 		{
 			path: '/home',
 			name: 'home',
 			component: Home,
 			meta: {
+				title: "Job♥Matcher | Home",
 				requiresAuth: true
 			}
+		},
+		{
+			path: "*",
+			component: pageNotFound
 		}
 	]
 });

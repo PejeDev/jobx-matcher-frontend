@@ -44,7 +44,7 @@ module.exports = {
 				const { id } = user[0].dataValues;
 				const payload = { id, email, torre_user };
 
-				let token = jwt.sign(payload, __.JWT.SECRET_KEY, { expiresIn: 3600 });
+				let token = jwt.sign(payload, __.JWT.SECRET_KEY, { expiresIn: 36000 });
 				return res.json({
 					success: true,
 					token: token
