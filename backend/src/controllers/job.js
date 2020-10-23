@@ -8,7 +8,7 @@ let controller = {
 	getOffers: async (req, res) => {
 		try {
 			let token = req.headers['authorization'].split(' ')[1];
-			let offset = req.params['offset'] || 0;
+			let offset = req.params.offset || 0;
 			let user = jwt.decode(token);
 			let jobs = await api.jobSearch(offset, user.torre_user);
 			let offers = jobs.results;

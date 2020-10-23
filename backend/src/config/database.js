@@ -8,7 +8,7 @@ const config = {
 	host: __.DB.HOST,
 	port: __.DB.PORT,
 	dialect: __.DB.DIALECT,
-	logging: __.DEBUG,
+	logging: false,
 	pool: {
 		max: 5,
 		min: 0,
