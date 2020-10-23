@@ -1,6 +1,7 @@
 'use strict';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const api = require('../api/torre')
 
 const db = require.main.require('./models');
 const User = db.User;
@@ -12,9 +13,9 @@ module.exports = {
 			let user = await User.findAll({ where: { email } });
 
 			if (user.length) {
-				return res.status(400).json({ email: "Email already exists!" });
+				throw "Email already exists!";
 			}
-
+			await api.getBioInfo(torre_user);
 			let newUser = { email, password, torre_user };
 			let salt = await bcrypt.genSalt(10);
 			let hash = await bcrypt.hash(newUser.password, salt);
@@ -34,7 +35,7 @@ module.exports = {
 			let user = await User.findAll({ where: { email } });
 
 			if (!user.length) {
-				return res.status(404).json({ error: "User not found!" });
+				throw "The user account doesn't exists!";
 			}
 
 			let originalPassword = user[0].dataValues.password;
@@ -50,11 +51,10 @@ module.exports = {
 					token: "Bearer " + token
 				});
 			}
-
-			return res.status(400).json({ error: "Password not correct" });
+			throw "Incorrect password!";
 		} catch (e) {
 			console.error(e);
-			return res.status(500).json({ error: `${e}` });
+			return res.status(401).json({ error: `${e}` });
 		}
 	},
 };

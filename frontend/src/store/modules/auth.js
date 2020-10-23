@@ -22,7 +22,7 @@ const actions = {
 			return resp;
 		} catch (error) {
 			commit(AUTH_ERROR, error);
-			localStorage.removeItem("user-token");
+			localStorage.removeItem("auth-token");
 			throw error;
 		}
 	},
@@ -40,7 +40,7 @@ const actions = {
 	[AUTH_LOGOUT]: ({ commit }) => {
 		return new Promise(resolve => {
 			commit(AUTH_LOGOUT);
-			localStorage.removeItem("user-token");
+			localStorage.removeItem("auth-token");
 			resolve();
 		});
 	}
