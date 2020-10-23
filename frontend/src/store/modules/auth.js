@@ -1,4 +1,5 @@
 import { AUTH_REGISTER, AUTH_LOGIN, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT } from '../actions/auth';
+import { USER_REQUEST } from '../actions/user';
 import api from '../../api/auth';
 
 const state = {
@@ -13,12 +14,13 @@ const getters = {
 };
 
 const actions = {
-	[AUTH_LOGIN]: async ({ commit }, user) => {
+	[AUTH_LOGIN]: async ({ commit, dispatch }, user) => {
 		try {
 			commit(AUTH_LOGIN);
 			let resp = await api.login(user);
 			localStorage.setItem("auth-token", resp.token);
 			commit(AUTH_SUCCESS, resp);
+			dispatch(USER_REQUEST);
 			return resp;
 		} catch (error) {
 			commit(AUTH_ERROR, error);
