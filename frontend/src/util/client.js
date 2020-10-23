@@ -4,7 +4,7 @@ const client = axios.create({
 	headers: {
 		"Access-Control-Allow-Origin": "*"
 	},
-	baseURL: "http://192.168.0.17:7000/api/v1"
+	baseURL: "http://104.200.24.96/api/v1"
 });
 
 export default client;
