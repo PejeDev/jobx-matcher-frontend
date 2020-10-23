@@ -4,7 +4,7 @@
     class="mx-auto"
     no-body
     style="max-width: 25rem"
-    v-bind:img-src="offer.organizations[0].picture"
+    v-bind:img-src="offer.picture"
     img-alt="Image"
     img-top
   >
@@ -13,12 +13,12 @@
     </template>
 
     <b-card-body>
-      <b-card-title>{{ offer.organizations[0].name }}</b-card-title>
+      <b-card-title>{{ offer.organization }}</b-card-title>
       <b-card-sub-title class="mb-2">{{ currency }} </b-card-sub-title>
       <div>
         <b-badge
           class="skills"
-          v-for="{ name } in offer.skills"
+          v-for="{ name } in skills"
           :key="name"
           pill
           variant="dark"
@@ -28,7 +28,9 @@
     </b-card-body>
 
     <b-card-body id="apply">
-      <a v-bind:href="'https://torre.co/en/jobs/' + offer.id">Apply now...</a>
+      <a v-bind:href="'https://torre.co/en/jobs/' + offer.torreId"
+        >Apply now...</a
+      >
     </b-card-body>
 
     <b-card-footer class="text-center">Powered by Torre Api</b-card-footer>
@@ -39,10 +41,10 @@
 export default {
   name: "Card",
   props: ["offer"],
-
   data() {
     return {
-      currency: `${this.offer.compensation.data.currency} ${this.offer.compensation.data.minAmount} - ${this.offer.compensation.data.maxAmount} / ${this.offer.compensation.data.periodicity}`,
+      currency: `${this.offer.currency} ${this.offer.compensation_min} - ${this.offer.compensation_maxt}`,
+      skills: JSON.parse(this.offer.skills),
     };
   },
 };

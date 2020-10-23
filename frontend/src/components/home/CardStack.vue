@@ -79,6 +79,7 @@ export default {
     },
 
     draggedRight() {
+      this.saveOffer(this.offers[this.count]);
       this.count = this.count + 1;
       if (this.count > 19) {
         this.fetchData();
@@ -100,6 +101,18 @@ export default {
 
     dragRight() {
       InteractEventBus.$emit(INTERACT_DRAGGED_RIGHT);
+    },
+    saveOffer: async function (offer) {
+      try {
+        await api.saveOffer(offer);
+      } catch (error) {
+        this.$swal({
+          icon: "error",
+          title: "Oops...",
+          text: error,
+        });
+        this.$router.push("/");
+      }
     },
 
     fetchData: async function () {

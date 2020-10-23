@@ -15,7 +15,7 @@
             <b-nav-item style="margin-top: 5px" href="/home">
               <a>✨Home</a>
             </b-nav-item>
-            <b-nav-item style="margin-top: 5px" href="#">
+            <b-nav-item style="margin-top: 5px" href="/matches">
               <a>🎉Matches</a>
             </b-nav-item>
           </b-navbar-nav>
@@ -34,6 +34,7 @@
 
 <script>
 import { AUTH_LOGOUT } from "../store/actions/auth";
+
 import api from "../api/user";
 export default {
   name: "NavBar",
@@ -78,7 +79,18 @@ export default {
           title: "Oops...",
           text: error,
         });
-        this.$router.push("/");
+        this.$store
+          .dispatch(AUTH_LOGOUT)
+          .then(() => {
+            this.$router.push("/");
+          })
+          .catch((error) => {
+            this.$swal({
+              icon: "error",
+              title: "Oops...",
+              text: error,
+            });
+          });
       }
     },
   },
