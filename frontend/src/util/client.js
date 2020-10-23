@@ -4,7 +4,7 @@ const client = axios.create({
 	headers: {
 		"Access-Control-Allow-Origin": "*"
 	},
-	baseURL: "https://jobmatcher.loca.lt/api/v1"
+	baseURL: "https://2db50937ef93.ngrok.io/api/v1"
 });
 
 export default client;
