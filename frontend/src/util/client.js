@@ -4,7 +4,7 @@ const client = axios.create({
 	headers: {
 		"Access-Control-Allow-Origin": "*"
 	},
-	baseURL: "https://2db50937ef93.ngrok.io/api/v1"
+	baseURL: "https://dfe2ffb1f53b.ngrok.io/api/v1"
 });
 
 export default client;
