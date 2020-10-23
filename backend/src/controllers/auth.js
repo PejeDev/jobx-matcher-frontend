@@ -33,22 +33,21 @@ module.exports = {
 		try {
 			let { email, password } = req.body;
 			let user = await User.findAll({ where: { email } });
-
 			if (!user.length) {
 				throw "The user account doesn't exists!";
 			}
-
+			let torre_user = user[0].dataValues.torre_user;
 			let originalPassword = user[0].dataValues.password;
 			let isMatch = await bcrypt.compare(password, originalPassword);
 
 			if (isMatch) {
 				const { id } = user[0].dataValues;
-				const payload = { id, email };
+				const payload = { id, email, torre_user };
 
 				let token = jwt.sign(payload, __.JWT.SECRET_KEY, { expiresIn: 3600 });
 				return res.json({
 					success: true,
-					token: "Bearer " + token
+					token: token
 				});
 			}
 			throw "Incorrect password!";
