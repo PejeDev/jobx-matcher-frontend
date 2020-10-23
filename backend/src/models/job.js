@@ -3,10 +3,9 @@ const DataTypes = require('sequelize').DataTypes;
 const Database = require.main.require('./config/database');
 
 const Job = Database.define('Job', {
-	job_id: {
-		type: DataTypes.DOUBLE,
+	torreId: {
+		type: DataTypes.STRING,
 	},
-
 	organization: {
 		type: DataTypes.STRING,
 
@@ -16,7 +15,7 @@ const Job = Database.define('Job', {
 
 	},
 	skills: {
-		type: DataTypes.STRING,
+		type: DataTypes.TEXT,
 
 	},
 	objective: {
@@ -33,7 +32,7 @@ const Job = Database.define('Job', {
 	compensation_max: {
 		type: DataTypes.DOUBLE,
 	},
-	email:{
+	email: {
 		type: DataTypes.STRING,
 	}
 });
