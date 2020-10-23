@@ -3,7 +3,7 @@ const DataTypes = require('sequelize').DataTypes;
 const Database = require.main.require('./config/database');
 
 const Job = Database.define('Job', {
-	id: {
+	job_id: {
 		type: DataTypes.DOUBLE,
 	},
 
