@@ -1,6 +1,6 @@
 const db = require('../models');
 const jwt = require('jsonwebtoken');
-const api = require('../api/torre');
+const api = require('../service/torre');
 
 let controller = {
 

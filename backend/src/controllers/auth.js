@@ -1,7 +1,7 @@
 'use strict';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const api = require('../api/torre')
+const api = require('../service/torre')
 
 const db = require.main.require('./models');
 const User = db.User;
